@@ -4,7 +4,7 @@ PVector location = new PVector (250, 250);
 PVector velocity = new PVector (0  , 0 ) ;
 
 float mouseAcceleration = 10000;
-float friction = 0.98;
+float friction = 0.70;
 void setup(){
   size(500,  500);
   frameRate(30);
@@ -21,10 +21,10 @@ void draw(){
 acceleration.div(acceleration.mag()*acceleration.mag()).mult(mouseAcceleration);
 velocity.x += acceleration.x/frameRate;
 velocity.y += acceleration.y/frameRate;
-velocity.sub() -= velocity
+velocity.x -=velocity.x*friction/frameRate;
   
-location.x += vel.x/frameRate;
-location.y += vel.y/frameRate;
+location.x += velocity.x/frameRate;
+location.y += velocity.y/frameRate;
 
 
 if (location.y >= 500){
